@@ -59,11 +59,12 @@ namespace MosaicImageControlDemo
 
         public async void ContinueFileOpenPicker(FileOpenPickerContinuationEventArgs args)
         {
+            TreeMap.Children.Clear();
             var files = args.Files;
             var sources = new List<BitmapImage>();
             foreach (var file in files)
             {
-                var stream = await file.GetScaledImageAsThumbnailAsync(ThumbnailMode.PicturesView, 300);
+                var stream = (await file.OpenStreamForReadAsync()).AsRandomAccessStream();//await file.GetScaledImageAsThumbnailAsync(ThumbnailMode.PicturesView, 300);
                 var imageSource = new BitmapImage();
                 await imageSource.SetSourceAsync(stream);
 
