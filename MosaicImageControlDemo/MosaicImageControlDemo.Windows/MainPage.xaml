@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="MosaicImageControlDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MosaicImageControlDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mosaicImageControl="using:MosaicImageControls.MosaicImageControl"
+    xmlns:treeMapControl="using:MosaicImageControls.TreeMapControl"
+    mc:Ignorable="d">
+    
+    <Page.BottomAppBar>
+        <CommandBar IsOpen="True" IsSticky="True">
+            <AppBarButton x:Name="AddButtonClick" Icon="Add" Label="Add pictures" Click="AddButtonClick_OnClick"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="MosaicImage" HorizontalAlignment="Center" Margin="0,40,0,10" FontSize="24"/>
+            <TextBlock Grid.Column="1" Text="TreeMap" HorizontalAlignment="Center" Margin="0,40,0,10" FontSize="24"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer Margin="120,80,20,80">
+                <mosaicImageControl:MosaicImage x:Name="MosaicImage" VerticalAlignment="Top"/>
+            </ScrollViewer>
+            
+            <treeMapControl:SquarifiedTreeMapPanel x:Name="TreeMap" Grid.Column="1" Margin="20,80,120,80"/>
+        </Grid>
+    </Grid>
+</Page>
